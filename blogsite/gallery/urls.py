@@ -1,0 +1,12 @@
+from django.contrib import admin
+from django.urls import path 
+
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('',views.Product_list  , name='product_list'),
+    path('<int:pk>/', views.Product_detail, name='product_detail'),
+    path('<int:pk>/edit/', views.edit_product, name='edit_product'),
+    path('<int:pk>/delete/', views.delete_product, name='delete_product'),
+
+]
