@@ -3,9 +3,9 @@ from django.db import models
 # Create your models here.
 
 class Product(models.Model):
-    name = models.charField(max_length=225)
-    description = models.models.TextField()
-    image = models.models.ImageField(upload_to='products/')
+    name = models.CharField(max_length=225)
+    description = models.TextField()
+    image = models.ImageField(upload_to='products/')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
