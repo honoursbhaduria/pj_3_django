@@ -4,12 +4,85 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog Website</title>
-    <!-- Add Bootstrap CSS link here -->
+    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #fffdf9;
+            color: #333;
+            font-family: 'Comic Sans MS', 'Chalkboard SE', cursive;
+        }
+
+        h1 {
+            color: #ff9800;
+            text-align: center;
+            margin-bottom: 40px;
+            text-shadow: 1px 1px #ccc;
+        }
+
+        .card {
+            background-color: #ffffff;
+            border: 2px solid #ffe082;
+            border-radius: 15px;
+            box-shadow: 4px 4px 0 #ffcc80;
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: scale(1.02);
+        }
+
+        .card-title {
+            color: #f57c00;
+        }
+
+        .card-text {
+            color: #444;
+        }
+
+        .card img {
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        a.btn-action {
+            display: inline-block;
+            margin-right: 10px;
+            margin-top: 10px;
+            padding: 8px 15px;
+            font-size: 1em;
+            font-weight: bold;
+            color: #fff;
+            border-radius: 10px;
+            text-decoration: none;
+            box-shadow: 3px 3px 0 #aaa;
+            transition: transform 0.1s ease-in-out;
+        }
+
+        a.btn-edit {
+            background-color: #ffb300;
+        }
+
+        a.btn-delete {
+            background-color: #e53935;
+        }
+
+        a.btn-action:active {
+            transform: scale(0.96);
+        }
+
+        small {
+            display: block;
+            margin-top: 5px;
+            color: #666;
+        }
+    </style>
 </head>
 <body>
     <div class="container mt-5">
-        <h1>Today's New Blogs</h1>
+        <h1>📚 Today's New Blogs</h1>
         <div class="row">
             {% for product in products %}
                 <div class="col-md-4 mb-4">
@@ -20,10 +93,10 @@
                         <div class="card-body">
                             <h5 class="card-title">{{ product.name }}</h5>
                             <p class="card-text">{{ product.short_description }}</p>
-                            <a href="{% url 'edit_product' product.pk %}">Edit</a>
-                            <a href="{% url 'delete_product' product.pk %}">Delete</a> <br>
-                            <small class="card-text">Created at: {{ product.created_at }}</small> <br>
-                            <small class="card-text">Updated at: {{ product.updated_at }}</small>
+                            <a href="{% url 'edit_product' product.pk %}" class="btn-action btn-edit">✏️ Edit</a>
+                            <a href="{% url 'delete_product' product.pk %}" class="btn-action btn-delete">🗑️ Delete</a>
+                            <small>🕒 Created at: {{ product.created_at }}</small>
+                            <small>🛠️ Updated at: {{ product.updated_at }}</small>
                         </div>
                     </div>
                 </div>
@@ -31,7 +104,7 @@
         </div>
     </div>
 
-    <!-- Add Bootstrap JS and jQuery scripts here (if needed) -->
+    <!-- Bootstrap JS + jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

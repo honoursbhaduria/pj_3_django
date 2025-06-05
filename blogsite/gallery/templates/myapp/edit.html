@@ -1,7 +1,93 @@
-<h2>Edit Blog Post</h2>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Save Changes</button>
-</form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Blog Post</title>
+    <style>
+        body {
+            background-color: #1e1e1e;
+            color: #f0e6d2;
+            font-family: 'Comic Sans MS', 'Chalkboard SE', cursive;
+            padding: 50px;
+            max-width: 700px;
+            margin: auto;
+        }
 
+        h2 {
+            font-size: 2.5em;
+            color: #ffd700;
+            text-align: center;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px #000;
+        }
+
+        form {
+            background-color:rgb(255, 255, 255);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 4px 4px 0 #000;
+        }
+
+        form p {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: none;
+            font-size: 1em;
+            margin-top: 5px;
+        }
+
+        button {
+            background-color: #ff6f00;
+            color: white;
+            padding: 12px 25px;
+            font-size: 1.2em;
+            font-weight: bold;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            box-shadow: 3px 3px 0 #000;
+            transition: transform 0.1s ease-in-out;
+        }
+
+        button:active {
+            transform: scale(0.97);
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #ffd700;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        .back-link:hover {
+            color: #fff176;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>📝 Edit Blog Post</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">💾 Save Changes</button>
+    </form>
+
+    <a href="{% url 'product_list' %}" class="back-link">⬅️ Back to List</a>
+
+</body>
+</html>

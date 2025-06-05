@@ -1,6 +1,80 @@
-<h2>Delete Blog Post</h2>
-<p>Are you sure you want to delete "{{ product.name }}"?</p>
-<form method="post">
-    {% csrf_token %}
-    <button type="submit">Yes, Delete</button>
-</form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete Blog Post</title>
+    <style>
+        body {
+            background-color:rgb(255, 255, 255);
+            color: #f0e6d2;
+            font-family: 'Comic Sans MS', 'Chalkboard SE', cursive;
+            text-align: center;
+            padding: 50px;
+        }
+
+        h2 {
+            font-size: 2.5em;
+            color: #ffdd57;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px #000;
+        }
+
+        p {
+            font-size: 1.5em;
+            margin-bottom: 30px;
+        }
+
+        form {
+            display: inline-block;
+        }
+
+        button {
+            font-size: 1.2em;
+            padding: 10px 25px;
+            margin: 0 10px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 3px 3px 0 #000;
+            transition: transform 0.1s ease-in-out;
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        .delete-button {
+            background-color: #ff6f00;
+            color: #fff;
+        }
+
+        .cancel-button {
+            background-color: #ffd700;
+            color: #000;
+            text-decoration: none;
+            padding: 10px 25px;
+            border-radius: 10px;
+            font-size: 1.2em;
+            font-weight: bold;
+            box-shadow: 3px 3px 0 #000;
+            display: inline-block;
+        }
+
+        .cancel-button:hover {
+            background-color: #fff176;
+        }
+    </style>
+</head>
+<body>
+    <h2>Delete Blog Post</h2>
+    <p>Are you sure you want to delete "<strong>{{ product.name }}</strong>"?</p>
+    
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="delete-button">🔥 Yes, Delete</button>
+    </form>
+
+    <a href="{% url 'product_list' %}" class="cancel-button">⬅️ Cancel</a>
+</body>
+</html>

@@ -3,18 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <title>{{ product.name }} - Blog Detail</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #fffefc;
+            color: #333;
+            font-family: 'Comic Sans MS', 'Chalkboard SE', cursive;
+            padding: 30px;
+        }
+
+        h1 {
+            color: #ff9800;
+            text-align: center;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px #ccc;
+        }
+
+        .card {
+            background-color: #ffffff;
+            border: 2px solid #ffe082;
+            border-radius: 15px;
+            box-shadow: 4px 4px 0 #ffcc80;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .card img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+        }
+
+        .card h2 {
+            color: #f57c00;
+        }
+
+        .card p {
+            color: #444;
+        }
+
+        .btn-action {
+            display: inline-block;
+            margin-right: 10px;
+            margin-top: 15px;
+            padding: 8px 15px;
+            font-size: 1em;
+            font-weight: bold;
+            color: #fff;
+            border-radius: 10px;
+            text-decoration: none;
+            box-shadow: 3px 3px 0 #aaa;
+            transition: transform 0.1s ease-in-out;
+        }
+
+        .btn-edit {
+            background-color: #ffb300;
+        }
+
+        .btn-delete {
+            background-color: #e53935;
+        }
+
+        .btn-back {
+            background-color: #29b6f6;
+        }
+
+        .btn-action:active {
+            transform: scale(0.96);
+        }
+    </style>
 </head>
 <body>
-    <h1>{{ product.name }} - Blog </h1>
-    
-    <div>
-        <img src="{{ product.image.url }}" alt="{{ product.name }}" width="200">
+
+    <h1>📰 Blog Detail</h1>
+
+    <div class="card">
+        <img src="{{ product.image.url }}" alt="{{ product.name }}">
+        <h2>{{ product.name }}</h2>
+        <p>{{ product.description }}</p>
+
+        <a href="{% url 'edit_product' product.pk %}" class="btn-action btn-edit">✏️ Edit</a>
+        <a href="{% url 'delete_product' product.pk %}" class="btn-action btn-delete">🗑️ Delete</a>
+        <a href="{% url 'product_list' %}" class="btn-action btn-back">⬅️ Back to Blogs</a>
     </div>
-    <h2>{{ product.name }}</h2>
-    <p>{{ product.description }}</p>
-    <a href="{% url 'edit_product' product.pk %}">Edit</a>
-    <a href="{% url 'delete_product' product.pk %}">Delete</a> <br>
-    
-    <a href="{% url 'product_list' %}">Back to Blogs Home Page</a>
+
 </body>
 </html>
