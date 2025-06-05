@@ -11,6 +11,21 @@ def product_detail(request, pk):
     product = get_object_or_404(Product, pk=pk)
     return render(request, 'myapp/index2.html', {'product': product})
 
+# def edit_product(request, pk):
+#     product = get_object_or_404(Product, pk=pk)
+#     if request.method == 'POST':
+#         form = ProductForm(request.POST, instance=product)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('product_list')
+#     else:
+#         form = ProductForm(instance=product)
+#     return render(request, 'myapp/delete.html', {'form': form})
+
+# def home(request):
+#     return HttpResponse("hello world")
+
+
 def edit_product(request, pk):
     product = get_object_or_404(Product, pk=pk)
     if request.method == 'POST':
@@ -20,7 +35,12 @@ def edit_product(request, pk):
             return redirect('product_list')
     else:
         form = ProductForm(instance=product)
-    return render(request, 'myapp/delete.html', {'form': form})
+    return render(request, 'myapp/edit.html', {'form': form, 'product': product})
 
-def home(request):
-    return HttpResponse("hello world")
+
+def delete_product(request, pk):
+    product = get_object_or_404(Product, pk=pk)
+    if request.method == 'POST':
+        product.delete()
+        return redirect('product_list')
+    return render(request, 'myapp/delete.html', {'product': product})
